@@ -59,12 +59,12 @@ const Report = (props) => {
   }, [props.reportConditions]);
 
   useEffect(() => {
+    console.log("before empty value check");
     if(!Object.values(report).includes("")){
       let consecutiveDays = report.analysis === "daily" ? 0 : report.days; 
       const path = 'http://20.85.211.143:8080/api/GenerateReport/' + report.analysis + '/' + report.occurences + '/' + report.legs + '/' + report.intermittent + '/' +
       consecutiveDays + '/' + report.ata + '/' + report.eqID + '/'+ report.operator + '/' + report.messages + '/' + report.fromDate + '/' + report.toDate;
-      console.log(path,"path no empty value");
-
+      console.log(path, "after empty value check");
       if (report.analysis === "daily"){
         setDailyValue(1);
         setDailyReportData([]);

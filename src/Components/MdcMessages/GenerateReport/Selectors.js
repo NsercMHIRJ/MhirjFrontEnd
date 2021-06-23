@@ -35,8 +35,14 @@ export const AirlineOperatorSelector = (props) => {
   const [airline, setAirline] = useState('');
 
   const handleAirlineChange = (event) => {
-    setAirline(event.target.value);
-    props.handleAirlineChange(event.target.value);
+    if ( event.target.value === "none"){
+      setAirline("");
+      props.handleAirlineChange("");
+    }
+    else{
+      setAirline(event.target.value);
+      props.handleAirlineChange(event.target.value);
+    }  
   };
 
   return(
@@ -177,9 +183,15 @@ export const MessagesSelector = (props) => {
   const [messages, setIncludeMessages] = useState('');
 
   const handleMessagesChange = (event) => {
-    let value = 0;
-    if(event.target.value === 'Include'){
+    let value;
+    if (event.target.value === "none"){
+      value = "";
+    }
+    else if (event.target.value === 'Include'){
       value = 1;
+    }
+    else{
+      value = 2;
     }
     setIncludeMessages(event.target.value);
     props.handleMessagesChange(value);
