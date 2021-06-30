@@ -24,12 +24,14 @@ const getMuiTheme = () => createMuiTheme({
   overrides: {
     MUIDataTableBodyCell: {
       root: {
-        // width: "100px",
-        // height: "100px",
-        padding: '10px',
-        textAlign: 'center',
+        padding: '10px 8px',
       }
-    }
+    },
+    MUIDataTableHeadCell:{
+      root: {
+        whiteSpace:'nowrap',
+      },
+    },
   }
 })
 
@@ -277,7 +279,7 @@ const HistoryReport = (props) => {
         },
     },
       elevation: 4,
-      rowsPerPage: 7,
+      rowsPerPage: 10,
       rowsPerPageOptions: [10,20,50],
       selectToolbarPlacement:"none",
       tableBodyHeight: props.loading === true || data.length === 0 ? '200px' : '650px'
