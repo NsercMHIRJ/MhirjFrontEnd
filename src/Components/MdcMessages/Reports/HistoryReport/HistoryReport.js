@@ -18,6 +18,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const getMuiTheme = () => createMuiTheme({
+  palette: {type: 'light'},
+  typography: {useNextVariants: true},
+  overrides: {
+    MUIDataTableBodyCell: {
+      root: {
+        // width: "100px",
+        // height: "100px",
+        padding: '10px',
+        textAlign: 'center',
+      }
+    }
+  }
+})
+
 const HistoryReport = (props) => {
   const [flagList, setFlagList] = useState();
   const [rowsSelectedState, setRowsSelected] = useState([]);
@@ -42,7 +57,6 @@ const HistoryReport = (props) => {
        filter: true,
        filterType: 'dropdown',
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap'}})
       }
     },
     {
@@ -52,7 +66,7 @@ const HistoryReport = (props) => {
        filter: true,
        filterType: 'dropdown',
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap', minWidth: "90px"}})
+       setCellProps: () => ({style: {minWidth:'150px'}}),
       }
     },
     {
@@ -62,7 +76,6 @@ const HistoryReport = (props) => {
        filter: true,
        filterType: 'dropdown',
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap'}})
       }
     },
     {
@@ -101,7 +114,6 @@ const HistoryReport = (props) => {
        filter: true,
        filterType: 'dropdown',
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap'}})
       }
     },
     {
@@ -111,7 +123,6 @@ const HistoryReport = (props) => {
        filter: true,
        filterType: 'dropdown',
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap'}})
       }
      },
      {
@@ -121,7 +132,6 @@ const HistoryReport = (props) => {
        filter: true,
        filterType: 'dropdown',
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap',minWidth: "120px"}})
       }
      },
      {
@@ -131,7 +141,6 @@ const HistoryReport = (props) => {
        filter: true,
        filterType: 'dropdown',
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap',minWidth: "120px"}})
       }
      },
      {
@@ -141,7 +150,6 @@ const HistoryReport = (props) => {
        filter: true,
        filterType: 'dropdown',
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap'}})
       }
      },
      {
@@ -151,7 +159,6 @@ const HistoryReport = (props) => {
        filter: true,
        filterType: 'dropdown',
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap'}})
       }
      },
      {
@@ -161,7 +168,6 @@ const HistoryReport = (props) => {
        filter: true,
        filterType: 'dropdown',
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap'}})
       }
      },
      {
@@ -171,47 +177,42 @@ const HistoryReport = (props) => {
        filter: true,
        filterType: 'dropdown',
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap',minWidth: "100px"}})
       }
      },
      {
       name: 'topMessage', 
       label: 'MHIRJ Known Message',
       options: {
-       filter: true,
-       filterType: 'dropdown',
+       filter: false,
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap'}})
+       setCellProps: () => ({style: {minWidth:'200px'}})
       }
      },
      {
       name: 'recommendation', 
       label: 'MHIRJ Recommended Action',
       options: {
-       filter: true,
-       filterType: 'dropdown',
+       filter: false,
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap'}})
+       setCellProps: () => ({style: {minWidth:'400px'}})
       }
      },
      {
       name: 'comments', 
       label: 'MHIRJ Additional Comment',
       options: {
-       filter: true,
-       filterType: 'dropdown',
+       filter: false,
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap'}})
+       setCellProps: () => ({style: {minWidth:'700px'}})
       }
      },
      {
       name: 'input', 
       label: 'MHIRJ Input',
       options: {
-       filter: true,
-       filterType: 'dropdown',
+       filter: false,
        sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap'}})
+       setCellProps: () => ({style: {minWidth:'400px'}})
       }
      },
     ];
@@ -254,10 +255,18 @@ const HistoryReport = (props) => {
       responsive: "standard",
       fixedHeader: true,
       fixedSelectColumn: true,
+      jumpToPage: true,
+      resizableColumns: false,
       downloadOptions: {
         filename: 'History Report from ' + props.reportConditions.fromDate + ' to ' + props.reportConditions.toDate + '.csv',
         separator: ',',
       },
+      //setRowProps for jam report on history report
+      // setRowProps: (row, index) => {
+      //   if (row[0] === "10291"){
+      //     return {style: {background:'#FF7F50'}}
+      //   }
+      // },
       draggableColumns: {
         enabled: false,
         transitionTime: 300,
@@ -269,22 +278,19 @@ const HistoryReport = (props) => {
     },
       elevation: 4,
       rowsPerPage: 7,
-      rowsPerPageOptions: [7,20,50],
+      rowsPerPageOptions: [10,20,50],
       selectToolbarPlacement:"none",
-      tableBodyHeight: props.loading === true || data.length === 0 ? '200px' : '500px'
+      tableBodyHeight: props.loading === true || data.length === 0 ? '200px' : '650px'
     };
-
-    const theme = createMuiTheme({
-      palette: {type: 'light'},
-      typography: {useNextVariants: true},
-  });
   
 const classes = useStyles();
+const themes = getMuiTheme();
+
   return (
     <div className={classes.root}>
       <Grid container spacing={0}>
         <Grid item xs={12}>
-            <MuiThemeProvider theme={theme}>
+            <MuiThemeProvider theme={themes}>
               <MUIDataTable
                 title= {props.title}
                 data={data}

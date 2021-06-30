@@ -235,8 +235,14 @@ const DailyReport = (props) => {
         filename: 'Daily Report from ' + props.reportConditions.fromDate + ' to ' + props.reportConditions.toDate + '.csv',
         separator: ',',
       },
+      //setRowProps for jam report enabled on daily report
+      // setRowProps: (row, index) => {
+      //   if (row[1] === "10291"){
+      //     return {style: {background:'#FF7F50'}}
+      //   }
+      // },
       draggableColumns: {
-        enabled: false,
+        enabled: true,
         transitionTime: 300,
       },
       textLabels: {

@@ -191,7 +191,7 @@ export const MessagesSelector = (props) => {
       value = 1;
     }
     else{
-      value = 2;
+      value = 0;
     }
     setIncludeMessages(event.target.value);
     props.handleMessagesChange(value);
