@@ -158,7 +158,19 @@ const Conditions = (props) => {
       toDate: dateTo,
     });
   }    
-
+const SaveFilter = (jsonData,filename) => {
+  
+    const fileData = JSON.stringify(jsonData);
+    const blob = new Blob([fileData], {type: "text/plain"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.download = `${filename}.json`;
+    link.href = url;
+    link.click();
+  
+ 
+ 
+} 
   return (
     <div>
       <form className={classes.form}>
@@ -238,6 +250,12 @@ const Conditions = (props) => {
               className={classes.button}>
                 Generate Report
             </Button>  
+            <Button 
+              variant="contained" 
+              onClick = {async()=>SaveFilter(reportConditions,"Filter1")}
+              className={classes.button}>
+                Save Filter
+            </Button>
             </Grid>          
         </Grid>
       </div>
