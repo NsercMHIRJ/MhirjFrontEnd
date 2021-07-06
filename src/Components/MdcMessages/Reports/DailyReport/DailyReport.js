@@ -54,15 +54,6 @@ const DailyReport = (props) => {
       }
     },
     {
-      name: 'tail', 
-      label: 'Tail #',
-      options: {
-       filter: true,
-       filterType: 'dropdown',
-       sort: true,
-      }
-    },
-    {
       name: 'EICASMessages', 
       label: 'EICAS Related',
       options: {
@@ -95,8 +86,7 @@ const DailyReport = (props) => {
       name: 'ATA', 
       label: 'ATA',
       options: {
-       filter: true,
-       filterType: 'dropdown',
+       filter: false,
        sort: true,
        setCellProps: () => ({style: {whiteSpace:'nowrap'}})
       }
@@ -124,7 +114,7 @@ const DailyReport = (props) => {
       name: 'equationDescription', 
       label: 'Equation Description',
       options: {
-       filter: false,
+       filter: true,
        filterType: 'dropdown',
        sort: true,
       }
@@ -133,7 +123,7 @@ const DailyReport = (props) => {
       name: 'totalOccurences', 
       label: 'Total Occurences',
       options: {
-       filter: false,
+       filter: true,
        filterType: 'dropdown',
        sort: true,
       }
@@ -142,7 +132,7 @@ const DailyReport = (props) => {
       name: 'consecutiveDays', 
       label: 'Consecutive Days',
       options: {
-       filter: false,
+       filter: true,
        filterType: 'dropdown',
        sort: true,
       }
@@ -151,7 +141,7 @@ const DailyReport = (props) => {
       name: 'ConsecutiveFlights', 
       label: 'Consecutive Flights',
       options: {
-       filter: false,
+       filter: true,
        filterType: 'dropdown',
        sort: true,
       }
@@ -160,7 +150,7 @@ const DailyReport = (props) => {
       name: 'intermittent', 
       label: 'Intermittent',
       options: {
-       filter: false,
+       filter: true,
        filterType: 'dropdown',
        sort: true,
       }
@@ -169,7 +159,7 @@ const DailyReport = (props) => {
       name: 'reasons', 
       label: 'Reasons For Flag',
       options: {
-       filter: false,
+       filter: true,
        filterType: 'dropdown',
        sort: true,
       }
@@ -227,7 +217,6 @@ const DailyReport = (props) => {
           {
             date: DateConverter(item["Date"]), 
             ACSN: item["AC SN"], 
-            tail: item["Tail#"],
             EICASRelated: item["EICAS Message"], 
             mdcMessages: item["MDC Message"],  
             LRU: item["LRU"],  

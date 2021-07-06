@@ -53,8 +53,8 @@ const useStyles = makeStyles((theme) => ({
     margin: '20px auto 30px',
   },
   button:{
-    margin:'25px auto 10px',
-    width:'80%',
+    margin:'40px auto',
+    width:'70%',
     backgroundColor:"#C5D3E0",
   },
   formControl: {

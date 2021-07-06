@@ -62,15 +62,6 @@ const HistoryReport = (props) => {
       }
     },
     {
-      name: 'tail', 
-      label: 'Tail #',
-      options: {
-       filter: true,
-       filterType: 'dropdown',
-       sort: true,
-      }
-    },
-    {
       name: 'EICASMessages', 
       label: 'EICAS Related',
       options: {
@@ -103,8 +94,7 @@ const HistoryReport = (props) => {
       name: 'ATA', 
       label: 'ATA',
       options: {
-       filter: true,
-       filterType: 'dropdown',
+       filter: false,
        sort: true,
        setCellProps: () => ({style: {whiteSpace:'nowrap'}})
       }
@@ -132,7 +122,7 @@ const HistoryReport = (props) => {
       name: 'equationDescription', 
       label: 'Equation Description',
       options: {
-       filter: false,
+       filter: true,
        filterType: 'dropdown',
        sort: true,
       }
@@ -141,7 +131,7 @@ const HistoryReport = (props) => {
       name: 'totalOccurences', 
       label: 'Total Occurences',
       options: {
-       filter: false,
+       filter: true,
        filterType: 'dropdown',
        sort: true,
       }
@@ -150,7 +140,7 @@ const HistoryReport = (props) => {
       name: 'consecutiveDays', 
       label: 'Consecutive Days',
       options: {
-       filter: false,
+       filter: true,
        filterType: 'dropdown',
        sort: true,
       }
@@ -159,7 +149,7 @@ const HistoryReport = (props) => {
       name: 'ConsecutiveFlights', 
       label: 'Consecutive Flights',
       options: {
-       filter: false,
+       filter: true,
        filterType: 'dropdown',
        sort: true,
       }
@@ -168,7 +158,7 @@ const HistoryReport = (props) => {
       name: 'intermittent', 
       label: 'Intermittent',
       options: {
-       filter: false,
+       filter: true,
        filterType: 'dropdown',
        sort: true,
       }
@@ -177,7 +167,7 @@ const HistoryReport = (props) => {
       name: 'reasons', 
       label: 'Reasons For Flag',
       options: {
-       filter: false,
+       filter: true,
        filterType: 'dropdown',
        sort: true,
       }
@@ -234,7 +224,6 @@ const HistoryReport = (props) => {
         data.push(
           {
             ACSN: item["AC SN"], 
-            tail: item["Tail#"],
             EICASMessages: item["EICAS Message"], 
             mdcMessages: item["MDC Message"],  
             LRU: item["LRU"],  
